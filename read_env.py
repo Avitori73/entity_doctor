@@ -1,7 +1,9 @@
 import os
-from turtle import st
 from dotenv import load_dotenv
 from rich.console import Console
+from rich.panel import Panel
+from rich.columns import Columns
+from rich.prompt import IntPrompt
 
 console = Console()
 
@@ -19,9 +21,20 @@ def read_env():
 def prompt_to_pick_project():
     env_vars = read_env()
     console.print("Available projects:", style="cyan")
+    contents = []
     for i, key in enumerate(env_vars.keys()):
-        console.print(f" - [green]{i}[/]: {key}")
-    project_index = int(console.input("Please select a project index: "))
+        contents.append(
+            Panel(
+                f"[cyan]{key}[/]",
+                title=f"Index {i}",
+                border_style="blue",
+                title_align="center",
+            )
+        )
+    console.print(Columns(contents))
+    project_index = IntPrompt.ask(
+        "Please select a project index [cyan](Range:0 ~ {})".format(len(env_vars) - 1)
+    )
 
     if project_index < 0 or project_index >= len(env_vars):
         console.print("Error: Invalid index.", style="red")

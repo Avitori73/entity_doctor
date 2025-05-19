@@ -1,5 +1,6 @@
 import cmd
 from rich.console import Console
+from check_lost import check_entity_lost
 from remove_entity import remove_entity
 
 console = Console()
@@ -14,6 +15,10 @@ class CLI(cmd.Cmd):
     def do_rm(self, args):
         """Remove an entity from the project."""
         remove_entity()
+
+    def do_chk_lost(self, args):
+        """Check the entity is complete."""
+        check_entity_lost()
 
     def do_exit(self, line):
         return True

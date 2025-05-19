@@ -1,5 +1,7 @@
-from detect_entity import detect_source_path, find_entity_file
+import humps
+from detect_entity import detect_source_path, search_entity
 from rich.console import Console
+from rich.prompt import Prompt
 from read_env import prompt_to_pick_project
 import os
 
@@ -9,22 +11,18 @@ console = Console()
 def remove_entity():
     project_name, project_path = prompt_to_pick_project()
     source_path = detect_source_path(project_path)
-    entity_name = console.input(
-        "[cyan]Please enter the entity name you want to remove (e.g., User): "
-    )
-    exist_source = find_entity_file(entity_name, source_path)
+    entity_name = Prompt.ask("Please enter the entity name you want to remove")
+    entity_name = humps.camelize(entity_name)
+    exist_source = search_entity(entity_name, source_path, project_path)
 
     if not exist_source:
-        console.print(f"Entity file not found for {entity_name}.", style="red")
         return
 
-    print("Entity file exists in the following paths:")
-    for name, source_path in exist_source:
-        console.print(f" - [green]{name}[/]: {source_path}", style="cyan")
-
     while True:
-        confirm = console.input(
-            "Do you want to remove the entity from the above paths? (y/n): "
+        confirm = Prompt.ask(
+            "Do you want to remove the entity from the above paths?",
+            choices=["y", "n"],
+            show_choices=True,
         )
         if confirm.lower() in ["y", "n"]:
             break
@@ -37,3 +35,7 @@ def remove_entity():
             console.print(f"Removed: {name}", style="green")
     else:
         console.print("Operation cancelled.", style="yellow")
+
+
+if __name__ == "__main__":
+    remove_entity()
