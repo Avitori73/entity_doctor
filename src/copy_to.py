@@ -1,6 +1,7 @@
 import shutil
 from read_env import prompt_to_pick_project
 from main_console import console
+from common import root_path
 import os
 
 
@@ -9,7 +10,6 @@ def copy_to():
     if choose_project is None:
         return
     _, project_path = choose_project
-    root_path = os.path.dirname(os.path.abspath(__file__))
 
     temp_output_path = os.path.join(root_path, "temp", "output")
     if not os.path.exists(temp_output_path):
