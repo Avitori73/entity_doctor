@@ -1,11 +1,9 @@
 import os
 import re
-from rich.console import Console
+from main_console import console
 from rich.panel import Panel
 from read_env import prompt_to_pick_project
 import humps
-
-console = Console()
 
 WORK_PATH = "src\\main\\java\\com\\a1stream\\domain"
 DOMAIN_NAME = "a1stream-domain"
@@ -140,7 +138,10 @@ def list_entity(regex, source_path):
 
 
 if __name__ == "__main__":
-    project_name, project_path = prompt_to_pick_project()
+    choose_project = prompt_to_pick_project()
+    if choose_project is None:
+        exit(1)
+    _, project_path = choose_project
     source_path = detect_source_path(project_path)
     entity_name = str(console.input("Please input entity name: "))
     entity_name = humps.camelize(entity_name)

@@ -1,15 +1,16 @@
 import humps
 from detect_entity import detect_source_path, search_entity
-from rich.console import Console
 from rich.prompt import Prompt
 from read_env import prompt_to_pick_project
 import os
-
-console = Console()
+from main_console import console
 
 
 def remove_entity():
-    project_name, project_path = prompt_to_pick_project()
+    choose_project = prompt_to_pick_project()
+    if choose_project is None:
+        return
+    _, project_path = choose_project
     source_path = detect_source_path(project_path)
     entity_name = Prompt.ask("Please enter the entity name you want to remove")
     entity_name = humps.camelize(entity_name)

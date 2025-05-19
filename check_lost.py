@@ -1,10 +1,8 @@
 from detect_entity import detect_source_path, list_entity
-from rich.console import Console
+from main_console import console
 from rich.panel import Panel
-
 from read_env import prompt_to_pick_project
 
-console = Console()
 
 entity_regex = r"(\w+)(?<!Key)\.java"
 entity_key_regex = r"(\w+)Key.java"
@@ -13,7 +11,10 @@ entity_vo_regex = r"(\w+)VO.java"
 
 
 def check_entity_lost():
-    project_name, project_path = prompt_to_pick_project()
+    choose_project = prompt_to_pick_project()
+    if choose_project is None:
+        return
+    _, project_path = choose_project
     source_path = detect_source_path(project_path)
     check_lost(source_path)
 

@@ -1,9 +1,9 @@
 import cmd
-from rich.console import Console
+import subprocess
 from check_lost import check_entity_lost
+from copy_to import copy_to
 from remove_entity import remove_entity
-
-console = Console()
+from add_entity import add_entity
 
 
 class CLI(cmd.Cmd):
@@ -16,9 +16,23 @@ class CLI(cmd.Cmd):
         """Remove an entity from the project."""
         remove_entity()
 
-    def do_chk_lost(self, args):
+    def do_chk(self, args):
         """Check the entity is complete."""
         check_entity_lost()
+
+    def do_gen(self, args):
+        """Generate entity files."""
+        add_entity()
+
+    def do_cp2(self, args):
+        """Copy files to the project."""
+        copy_to()
+
+    def do_sub(self, args):
+        """Run a subprocess."""
+        subprocess.run(
+            ["powershell", "echo", "'Hello from subprocess'"], stdin=subprocess.PIPE
+        )
 
     def do_exit(self, line):
         return True

@@ -1,11 +1,9 @@
 import os
 from dotenv import load_dotenv
-from rich.console import Console
 from rich.panel import Panel
 from rich.columns import Columns
 from rich.prompt import IntPrompt
-
-console = Console()
+from main_console import console
 
 
 def read_env():
@@ -38,7 +36,7 @@ def prompt_to_pick_project():
 
     if project_index < 0 or project_index >= len(env_vars):
         console.print("Error: Invalid index.", style="red")
-        exit(1)
+        return None
 
     project_name = list(env_vars.keys())[project_index]
     return (project_name, env_vars.get(project_name))
