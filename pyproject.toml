@@ -9,3 +9,9 @@ dependencies = [
     "pyhumps>=3.8.0",
     "rich>=14.0.0",
 ]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[project.scripts]
+doctor = "main:main"

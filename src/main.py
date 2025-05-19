@@ -38,6 +38,10 @@ class CLI(cmd.Cmd):
         return True
 
 
-if __name__ == "__main__":
+def main():
     cli = CLI()
     cli.cmdloop()
+
+
+if __name__ == "__main__":
+    main()
