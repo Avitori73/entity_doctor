@@ -1,4 +1,4 @@
-import humps
+import stringcase as sc
 from detect_entity import detect_source_path, search_entity
 from rich.prompt import Prompt
 from read_env import prompt_to_pick_project
@@ -13,7 +13,7 @@ def remove_entity():
     _, project_path = choose_project
     source_path = detect_source_path(project_path)
     entity_name = Prompt.ask("Please enter the entity name you want to remove")
-    entity_name = humps.camelize(entity_name)
+    entity_name = sc.camelcase(entity_name)
     exist_source = search_entity(entity_name, source_path, project_path)
 
     if not exist_source:

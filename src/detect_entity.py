@@ -3,7 +3,7 @@ import re
 from main_console import console
 from rich.panel import Panel
 from read_env import prompt_to_pick_project
-import humps
+import stringcase as sc
 
 WORK_PATH = "src\\main\\java\\com\\a1stream\\domain"
 DOMAIN_NAME = "a1stream-domain"
@@ -144,5 +144,5 @@ if __name__ == "__main__":
     _, project_path = choose_project
     source_path = detect_source_path(project_path)
     entity_name = str(console.input("Please input entity name: "))
-    entity_name = humps.camelize(entity_name)
+    entity_name = sc.camelcase(entity_name)
     search_entity(entity_name, source_path, project_path)
