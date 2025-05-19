@@ -1,4 +1,4 @@
-import humps
+import stringcase as sc
 import pyperclip as pc
 from main_console import console
 from rich.prompt import IntPrompt, Prompt
@@ -17,7 +17,7 @@ def change_case():
     contents = []
     contents.append(
         Panel(
-            "camelCase",
+            "snake_case",
             title="1",
             border_style="bold blue",
             title_align="left",
@@ -25,7 +25,7 @@ def change_case():
     )
     contents.append(
         Panel(
-            "PascalCase",
+            "camelCase",
             title="2",
             border_style="bold blue",
             title_align="left",
@@ -33,7 +33,7 @@ def change_case():
     )
     contents.append(
         Panel(
-            "snake_case",
+            "PascalCase",
             title="3",
             border_style="bold blue",
             title_align="left",
@@ -53,16 +53,36 @@ def change_case():
 
     if str(case) in choices:
         if case == 1:
-            new_entity_name = humps.camelize(entity_name)
+            new_entity_name = snakelize(entity_name)  # Convert to snake_case
         elif case == 2:
-            new_entity_name = humps.pascalize(entity_name)
+            new_entity_name = camelize(entity_name)  # Convert to camelCase
         elif case == 3:
-            new_entity_name = humps.decamelize(entity_name)
+            new_entity_name = pascalize(entity_name)  # Convert to PascalCase
         elif case == 4:
-            new_entity_name = humps.kebabize(entity_name)
+            new_entity_name = kebabize(entity_name)  # Convert to kebab-case
         pc.copy(new_entity_name)
         console.print(
             f"[bold green]New entity name [bold blue]({new_entity_name})[/bold blue] copied to clipboard.[/bold green]"
         )
     else:
         console.print("[bold red]Invalid case number.[/bold red]")
+
+
+def camelize(entity_name):
+    """Convert to camelCase."""
+    return sc.camelcase(entity_name)
+
+
+def pascalize(entity_name):
+    """Convert to PascalCase."""
+    return sc.pascalcase(entity_name)
+
+
+def snakelize(entity_name):
+    """Convert to snake_case."""
+    return sc.snakecase(entity_name)
+
+
+def kebabize(entity_name):
+    """Convert to kebab-case."""
+    return sc.spinalcase(entity_name)
