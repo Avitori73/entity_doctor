@@ -20,6 +20,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "dotenv" },
     { name = "pyhumps" },
+    { name = "pyperclip" },
     { name = "rich" },
 ]
 
@@ -27,6 +28,7 @@ dependencies = [
 requires-dist = [
     { name = "dotenv", specifier = ">=0.9.9" },
     { name = "pyhumps", specifier = ">=3.8.0" },
+    { name = "pyperclip", specifier = ">=1.9.0" },
     { name = "rich", specifier = ">=14.0.0" },
 ]
 
@@ -68,6 +70,12 @@ sdist = { url = "https://files.pythonhosted.org/packages/c4/83/fa6f8fb7accb21f39
 wheels = [
     { url = "https://files.pythonhosted.org/packages/9e/11/a1938340ecb32d71e47ad4914843775011e6e9da59ba1229f181fef3119e/pyhumps-3.8.0-py3-none-any.whl", hash = "sha256:060e1954d9069f428232a1adda165db0b9d8dfdce1d265d36df7fbff540acfd6", size = 6095, upload-time = "2022-10-21T10:38:58.231Z" },
 ]
+
+[[package]]
+name = "pyperclip"
+version = "1.9.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/30/23/2f0a3efc4d6a32f3b63cdff36cd398d9701d26cda58e3ab97ac79fb5e60d/pyperclip-1.9.0.tar.gz", hash = "sha256:b7de0142ddc81bfc5c7507eea19da920b92252b548b96186caf94a5e2527d310", size = 20961, upload-time = "2024-06-18T20:38:48.401Z" }
 
 [[package]]
 name = "python-dotenv"
