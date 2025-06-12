@@ -1,7 +1,7 @@
-from detect_entity import detect_source_path, list_entity
-from main_console import console
 from rich.panel import Panel
-from read_env import prompt_to_pick_project
+from .detect_entity import detect_source_path, list_entity
+from .main_console import console
+from .read_env import prompt_to_pick_project
 
 
 entity_regex = r"(\w+)(?<!Key)\.java"

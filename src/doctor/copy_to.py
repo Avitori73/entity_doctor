@@ -1,7 +1,7 @@
 import shutil
-from read_env import prompt_to_pick_project
-from main_console import console
 import os
+from .read_env import prompt_to_pick_project
+from .main_console import console
 
 
 def copy_to():

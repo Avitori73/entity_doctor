@@ -1,9 +1,9 @@
 import os
 import re
-from main_console import console
 from rich.panel import Panel
-from read_env import prompt_to_pick_project
 import stringcase as sc
+from .main_console import console
+from .read_env import prompt_to_pick_project
 
 WORK_PATH = "src\\main\\java\\com\\a1stream\\domain"
 DOMAIN_NAME = "a1stream-domain"

@@ -1,10 +1,10 @@
 import cmd
 import subprocess
-from change_case import change_case
-from check_lost import check_entity_lost
-from copy_to import copy_to
-from remove_entity import remove_entity
-from add_entity import add_entity
+from .change_case import change_case
+from .check_lost import check_entity_lost
+from .copy_to import copy_to
+from .remove_entity import remove_entity
+from .add_entity import add_entity
 
 
 class CLI(cmd.Cmd):

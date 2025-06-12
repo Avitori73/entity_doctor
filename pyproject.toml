@@ -15,4 +15,4 @@ dependencies = [
 package-dir = {"" = "src"}
 
 [project.scripts]
-doctor = "main:main"
+doctor = "doctor.main:main"

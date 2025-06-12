@@ -1,9 +1,9 @@
-import stringcase as sc
-from detect_entity import detect_source_path, search_entity
-from rich.prompt import Prompt
-from read_env import prompt_to_pick_project
 import os
-from main_console import console
+import stringcase as sc
+from rich.prompt import Prompt
+from .detect_entity import detect_source_path, search_entity
+from .read_env import prompt_to_pick_project
+from .main_console import console
 
 
 def remove_entity():

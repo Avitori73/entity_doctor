@@ -1,9 +1,9 @@
 import os
-from dotenv import load_dotenv
 from rich.panel import Panel
 from rich.columns import Columns
 from rich.prompt import IntPrompt
-from main_console import console
+from dotenv import load_dotenv
+from .main_console import console
 
 
 def read_env():

@@ -1,7 +1,7 @@
 import os
 import tempfile
 import subprocess
-from main_console import console
+from .main_console import console
 
 
 def add_entity():

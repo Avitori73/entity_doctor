@@ -1,9 +1,9 @@
 import stringcase as sc
 import pyperclip as pc
-from main_console import console
 from rich.prompt import IntPrompt, Prompt
 from rich.panel import Panel
 from rich.columns import Columns
+from .main_console import console
 
 
 def change_case():
