@@ -10,6 +10,10 @@ def copy_to():
         return
     _, project_path = choose_project
 
+    if project_path is None:
+        console.print("[bold red]Project path is None. Cannot copy files.[/bold red]")
+        return
+
     root_path = os.getcwd()
     temp_output_path = os.path.join(root_path, "temp", "output")
     if not os.path.exists(temp_output_path):

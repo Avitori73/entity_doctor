@@ -5,7 +5,6 @@ from .read_env import prompt_to_pick_project
 
 
 entity_regex = r"(\w+)(?<!Key)\.java"
-entity_key_regex = r"(\w+)Key.java"
 entity_repository_regex = r"(\w+)Repository.java"
 entity_vo_regex = r"(\w+)VO.java"
 
@@ -23,9 +22,6 @@ def check_lost(source_path):
     entity_set = list_entity(entity_regex, source_path["entity"]["entity_path"])
     entity_partition_set = list_entity(
         entity_regex, source_path["entity"]["entity_partition_path"]
-    )
-    entity_partition_key_set = list_entity(
-        entity_key_regex, source_path["entity"]["entity_partition_path"]
     )
     repository_set = list_entity(
         entity_repository_regex, source_path["repository"]["repository_path"]
@@ -48,7 +44,6 @@ def check_lost(source_path):
     is_any_partition_lost = get_lost_report(
         {
             "Entity Partition": entity_partition_set,
-            "Entity Partition Key": entity_partition_key_set,
             "Repository Partition": repository_partition_set,
             "VO Partition": vo_partition_set,
         }

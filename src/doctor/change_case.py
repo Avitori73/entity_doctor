@@ -52,6 +52,7 @@ def change_case():
     case = IntPrompt.ask("Enter the case number", choices=choices)
 
     if str(case) in choices:
+        new_entity_name = ""
         if case == 1:
             new_entity_name = snakelize(entity_name)  # Convert to snake_case
         elif case == 2:
