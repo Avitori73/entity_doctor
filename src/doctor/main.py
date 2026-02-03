@@ -2,7 +2,7 @@ import cmd
 import subprocess
 from .change_case import change_case
 from .check_lost import check_entity_lost
-from .copy_to import copy_to
+from .copy_to import copy_to, copy_to_no_repo
 from .remove_entity import remove_entity
 from .add_entity import add_entity
 
@@ -28,6 +28,10 @@ class CLI(cmd.Cmd):
     def do_cp2(self, args):
         """Copy files to the project."""
         copy_to()
+
+    def do_cp2nr(self, args):
+        """Copy files to the project excluding repository."""
+        copy_to_no_repo()
 
     def do_cc(self, args):
         """Change Case."""

@@ -1,10 +1,19 @@
 import shutil
 import os
+from typing import Optional
 from .read_env import prompt_to_pick_project
 from .main_console import console
 
 
+def copy_to_no_repo():
+    copy_to_with_exclude("repository")
+
+
 def copy_to():
+    copy_to_with_exclude(None)
+
+
+def copy_to_with_exclude(exclude_path: Optional[str]):
     choose_project = prompt_to_pick_project()
     if choose_project is None:
         return
@@ -30,10 +39,7 @@ def copy_to():
         )
         return
 
-    all_files = []
-    for dirpath, _, filenames in os.walk(copy_path):
-        for filename in filenames:
-            all_files.append(os.path.join(dirpath, filename))
+    all_files = get_all_files_exclude_path(copy_path, exclude_path)
 
     for file in all_files:
         # 目标路径
@@ -49,6 +55,16 @@ def copy_to():
         filename = os.path.basename(file)
         console.print(f"[bold green]Copying {filename}...[/bold green]")
         shutil.copy2(file, target_path)
+
+
+def get_all_files_exclude_path(root_path, exclude_path: Optional[str]):
+    all_files = []
+    for dirpath, _, filenames in os.walk(root_path):
+        if exclude_path and exclude_path in dirpath:
+            continue
+        for filename in filenames:
+            all_files.append(os.path.join(dirpath, filename))
+    return all_files
 
 
 if __name__ == "__main__":
